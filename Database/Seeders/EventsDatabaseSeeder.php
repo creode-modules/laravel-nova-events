@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Events\Database\Seeders;
+namespace Creode\LaravelNovaEvents\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;

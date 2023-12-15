@@ -1,5 +1,7 @@
 <?php
 
+use Creode\LaravelNovaEvents\Http\Controllers\EventsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,16 +13,13 @@
 |
 */
 
-use Modules\Events\Entities\EventCategory;
-use Modules\Events\Entities\EventSubCategory;
+Route::prefix('events')->group(function () {
+    Route::get('/', [EventsController::class, 'index']);
 
-Route::prefix('events')->group(function() {
-    Route::get('/', 'EventsController@index');
-
-    Route::get('/{eventCategory:slug}', 'EventsController@categoryShow')
+    Route::get('/{eventCategory:slug}', [EventsController::class, 'categoryShow'])
         ->name('events.category.show');
 
-    Route::get('/{eventCategory:slug}/{eventSubCategory:slug}', 'EventsController@subCategoryShow')
+    Route::get('/{eventCategory:slug}/{eventSubCategory:slug}', [EventsController::class, 'subCategoryShow'])
         ->name('events.sub_category.show')
         ->scopeBindings();
 });

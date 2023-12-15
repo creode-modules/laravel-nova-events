@@ -4,41 +4,32 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8883da244325e47aa330f1342ad4f604
+class ComposerStaticInitf2bd9fb2c66bab825d5dcd5759c900ef
 {
     public static $prefixLengthsPsr4 = array (
-        'M' => 
+        'C' => 
         array (
-            'Modules\\Events\\' => 15,
+            'Creode\\LaravelNovaEvents\\' => 25,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Modules\\Events\\' => 
+        'Creode\\LaravelNovaEvents\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/',
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Modules\\Events\\Database\\Seeders\\EventsDatabaseSeeder' => __DIR__ . '/../..' . '/Database/Seeders/EventsDatabaseSeeder.php',
-        'Modules\\Events\\Entities\\Event' => __DIR__ . '/../..' . '/Entities/Event.php',
-        'Modules\\Events\\Entities\\EventCategory' => __DIR__ . '/../..' . '/Entities/EventCategory.php',
-        'Modules\\Events\\Http\\Controllers\\EventsController' => __DIR__ . '/../..' . '/Http/Controllers/EventsController.php',
-        'Modules\\Events\\Nova\\Event' => __DIR__ . '/../..' . '/Nova/Event.php',
-        'Modules\\Events\\Nova\\EventCategory' => __DIR__ . '/../..' . '/Nova/EventCategory.php',
-        'Modules\\Events\\Providers\\EventsNovaServiceProvider' => __DIR__ . '/../..' . '/Providers/EventsNovaServiceProvider.php',
-        'Modules\\Events\\Providers\\EventsServiceProvider' => __DIR__ . '/../..' . '/Providers/EventsServiceProvider.php',
-        'Modules\\Events\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/Providers/RouteServiceProvider.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8883da244325e47aa330f1342ad4f604::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8883da244325e47aa330f1342ad4f604::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit8883da244325e47aa330f1342ad4f604::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf2bd9fb2c66bab825d5dcd5759c900ef::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf2bd9fb2c66bab825d5dcd5759c900ef::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf2bd9fb2c66bab825d5dcd5759c900ef::$classMap;
 
         }, null, ClassLoader::class);
     }

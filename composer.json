@@ -1,25 +1,38 @@
 {
-    "name": "nwidart/events",
-    "description": "",
+    "name": "creode/laravel-nova-events",
+    "description": "Add Events wth categories to your Laravel Nova project.",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Creode",
+            "email": "contact@creode.co.uk",
+            "role": "Developer"
         }
     ],
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Modules\\Events\\Providers\\EventsNovaSerivceProvider"
-            ],
-            "aliases": {
-
-            }
-        }
+    "homepage": "https://github.com/creode-modules/laravel-nova-events",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^7.3|^8.0"
     },
     "autoload": {
         "psr-4": {
-            "Modules\\Events\\": ""
+            "Creode\\LaravelNovaEvents\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Creode\\LaravelNovaEvents\\ToolServiceProvider",
+                "Creode\\LaravelNovaEvents\\LaravelNovaEventsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

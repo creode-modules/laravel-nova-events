@@ -7,13 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Modules\\Events\\Database\\Seeders\\EventsDatabaseSeeder' => $baseDir . '/Database/Seeders/EventsDatabaseSeeder.php',
-    'Modules\\Events\\Entities\\Event' => $baseDir . '/Entities/Event.php',
-    'Modules\\Events\\Entities\\EventCategory' => $baseDir . '/Entities/EventCategory.php',
-    'Modules\\Events\\Http\\Controllers\\EventsController' => $baseDir . '/Http/Controllers/EventsController.php',
-    'Modules\\Events\\Nova\\Event' => $baseDir . '/Nova/Event.php',
-    'Modules\\Events\\Nova\\EventCategory' => $baseDir . '/Nova/EventCategory.php',
-    'Modules\\Events\\Providers\\EventsNovaServiceProvider' => $baseDir . '/Providers/EventsNovaServiceProvider.php',
-    'Modules\\Events\\Providers\\EventsServiceProvider' => $baseDir . '/Providers/EventsServiceProvider.php',
-    'Modules\\Events\\Providers\\RouteServiceProvider' => $baseDir . '/Providers/RouteServiceProvider.php',
 );

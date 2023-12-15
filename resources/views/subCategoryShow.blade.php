@@ -1,4 +1,4 @@
-@extends('events::layouts.master')
+@extends('nova-events::layouts.master')
 
 @section('content')
 

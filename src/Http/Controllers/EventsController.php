@@ -26,7 +26,7 @@ class EventsController extends Controller
             $events = Event::upcomingEvents()->get();
         }
 
-        return view('events::index', compact('categories', 'events'));
+        return view('nova-events::index', compact('categories', 'events'));
     }
 
     /**
@@ -48,7 +48,7 @@ class EventsController extends Controller
         ]);
 
         $categories = EventCategory::with('sub_categories.events')->get();
-        return view('events::categoryShow', compact('eventCategory', 'categories'));
+        return view('nova-events::categoryShow', compact('eventCategory', 'categories'));
     }
 
     /**
@@ -71,6 +71,6 @@ class EventsController extends Controller
         },
         ]);
         $categories = EventCategory::with('sub_categories')->get();
-        return view('events::subCategoryShow', compact('eventSubCategory', 'categories'));
+        return view('nova-events::subCategoryShow', compact('eventSubCategory', 'categories'));
     }
 }

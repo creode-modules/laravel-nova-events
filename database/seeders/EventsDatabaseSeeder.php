@@ -16,6 +16,6 @@ class EventsDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        // $this->call("OthersTableSeeder");
+        \Creode\LaravelNovaEvents\Entities\Event::factory(30)->create();
     }
 }

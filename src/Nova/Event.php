@@ -2,15 +2,16 @@
 
 namespace Creode\LaravelNovaEvents\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Resource;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\URL;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\URL;
+use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\BelongsTo;
+use Creode\NovaPublishable\Published;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Resource;
 
 class Event extends Resource
 {
@@ -47,6 +48,7 @@ class Event extends Resource
     {
         return [
             ID::make()->sortable(),
+            Published::make('Published', 'published_at'),
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),

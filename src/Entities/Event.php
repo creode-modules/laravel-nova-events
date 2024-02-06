@@ -5,17 +5,45 @@ namespace Creode\LaravelNovaEvents\Entities;
 use Illuminate\Database\Eloquent\Model;
 use PawelMysior\Publishable\Publishable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
 {
-    use Publishable;
+    use Publishable, HasFactory;
 
+    /**
+     * Sets table for model extensions.
+     *
+     * @var string
+     */
+    protected $table = 'events';
+
+    /**
+     * Resets fillable attributes
+     *
+     * @var array
+     */
     protected $fillable = [];
 
+    /**
+     * Casts attributes to correct types
+     *
+     * @var array
+     */
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date'
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory<static>
+     */
+    protected static function newFactory()
+    {
+        return \Creode\LaravelNovaEvents\Database\Factories\EventFactory::new();
+    }
 
     public function scopePastEvents(Builder $query): void
     {

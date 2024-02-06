@@ -42,6 +42,8 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
                     '2023_08_16_093046_add_slug_field_to_events_table',
                     '2023_08_16_140223_add_slug_field_to_event_categories_table',
                     '2023_08_16_140352_add_slug_field_to_events_sub_categories_table',
+                    '2024_02_05_150518_remove_event_subcategories_table',
+                    '2024_02_05_155914_remove_event_categories_table',
                 ]
             )
             ->runsMigrations();

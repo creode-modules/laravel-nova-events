@@ -9,9 +9,10 @@ use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\BelongsTo;
 use Creode\NovaPublishable\Published;
 use Laravel\Nova\Http\Requests\NovaRequest;
+use Creode\NovaPublishable\Nova\PublishAction;
+use Creode\NovaPublishable\Nova\UnpublishAction;
 
 class Event extends Resource
 {
@@ -48,19 +49,27 @@ class Event extends Resource
     {
         return [
             ID::make()->sortable(),
+
             Published::make('Published', 'published_at'),
+
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
             Slug::make('Slug')->from('Title'),
+
             Date::make('Start Date')
                 ->sortable()
                 ->rules('required', 'date'),
+
             Date::make('End Date')
                 ->sortable()
                 ->rules('date'),
+
             Text::make('Venue'),
+
             Markdown::make('Address'),
+
             URL::make('Button Link', 'cta_link'),
         ];
     }
@@ -106,6 +115,16 @@ class Event extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            (new PublishAction)
+                ->confirmText('Are you sure you want to publish these items?')
+                ->confirmButtonText('Publish')
+                ->cancelButtonText("Don't Publish"),
+
+            (new UnpublishAction)
+                ->confirmText('Are you sure you want to unpublish these items?')
+                ->confirmButtonText('Unpublish')
+                ->cancelButtonText("Don't Unpublish")
+        ];
     }
 }

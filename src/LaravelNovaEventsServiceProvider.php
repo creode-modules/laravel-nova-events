@@ -9,7 +9,9 @@ use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class LaravelNovaEventsServiceProvider extends PackageServiceProvider
 {
-
+    /**
+     * Bootstrap any package services.
+     */
     public function boot()
     {
         parent::boot();
@@ -17,6 +19,11 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
         $this->registerResources();
     }
 
+    /**
+     * Registers Nova Resource.
+     *
+     * @return void
+     */
     public function registerResources()
     {
         Event::$model = config('nova-events.event_model', \Creode\LaravelNovaEvents\Entities\Event::class);
@@ -25,6 +32,12 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
         ]);
     }
 
+    /**
+     * Sets up the package.
+     *
+     * @param Package $package
+     * @return void
+     */
     public function configurePackage(Package $package): void
     {
         $package
@@ -41,6 +54,7 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
                     '2023_08_16_140352_add_slug_field_to_events_sub_categories_table',
                     '2024_02_05_150518_remove_event_subcategories_table',
                     '2024_02_05_155914_remove_event_categories_table',
+                    '2024_02_06_094533_add_published_field_to_events_table',
                 ]
             )
             ->runsMigrations();

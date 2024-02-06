@@ -31,7 +31,6 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-nova-events')
             ->hasViews()
-            ->hasRoutes('web')
             ->hasMigrations(
                 [
                     '2023_08_15_075403_create_event_categories_table',

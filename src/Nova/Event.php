@@ -55,11 +55,10 @@ class Event extends Resource
                 ->sortable()
                 ->rules('required', 'date'),
             Date::make('End Date')
-                ->sortable(),
+                ->sortable()
+                ->rules('date'),
             Text::make('Venue'),
             Markdown::make('Address'),
-            BelongsTo::make('Category', 'sub_category', \Creode\LaravelNovaEvents\Nova\EventSubCategory::class)
-                ->showCreateRelationButton(),
             URL::make('Button Link', 'cta_link'),
         ];
     }

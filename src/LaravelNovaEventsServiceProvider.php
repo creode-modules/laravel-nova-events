@@ -23,8 +23,6 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
     {
         Nova::resources([
             Event::class,
-            EventSubCategory::class,
-            EventCategory::class,
         ]);
     }
 

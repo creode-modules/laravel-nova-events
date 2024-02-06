@@ -3,33 +3,19 @@
 namespace Creode\LaravelNovaEvents\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use PawelMysior\Publishable\Publishable;
 use Illuminate\Database\Eloquent\Builder;
 
 class Event extends Model
 {
+    use Publishable;
+
     protected $fillable = [];
 
     protected $casts = [
         'start_date' => 'date',
         'end_date' => 'date'
     ];
-
-    public function sub_category()
-    {
-        return $this->belongsTo(\Creode\LaravelNovaEvents\Entities\EventSubCategory::class, 'sub_category_id', 'id');
-    }
-
-    public function category()
-    {
-        return $this->hasOneThrough(
-            \Creode\LaravelNovaEvents\Entities\EventCategory::class,
-            \Creode\LaravelNovaEvents\Entities\EventSubCategory::class,
-            'id',
-            'id',
-            'sub_category_id',
-            'category_id'
-        );
-    }
 
     public function scopePastEvents(Builder $query): void
     {

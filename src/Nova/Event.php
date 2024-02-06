@@ -64,13 +64,16 @@ class Event extends Resource
 
             Date::make('End Date')
                 ->sortable()
-                ->rules('date'),
+                ->rules('sometimes:date'),
 
-            Text::make('Venue'),
+            Text::make('Venue')
+                ->hideFromIndex(),
 
-            Markdown::make('Address'),
+            Markdown::make('Address')
+                ->hideFromIndex(),
 
-            URL::make('Button Link', 'cta_link'),
+            URL::make('Button Link', 'cta_link')
+                ->hideFromIndex(),
         ];
     }
 

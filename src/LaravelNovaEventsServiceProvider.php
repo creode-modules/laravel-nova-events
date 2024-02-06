@@ -3,8 +3,6 @@
 namespace Creode\LaravelNovaEvents;
 
 use Creode\LaravelNovaEvents\Nova\Event;
-use Creode\LaravelNovaEvents\Nova\EventCategory;
-use Creode\LaravelNovaEvents\Nova\EventSubCategory;
 use Laravel\Nova\Nova;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -21,6 +19,7 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
 
     public function registerResources()
     {
+        Event::$model = config('nova-events.event_model', \Creode\LaravelNovaEvents\Entities\Event::class);
         Nova::resources([
             Event::class,
         ]);
@@ -31,6 +30,7 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-nova-events')
             ->hasViews()
+            ->hasConfigFile()
             ->hasMigrations(
                 [
                     '2023_08_15_075403_create_event_categories_table',

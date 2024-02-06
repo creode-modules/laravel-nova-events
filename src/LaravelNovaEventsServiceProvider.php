@@ -42,7 +42,6 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
     {
         $package
             ->name('laravel-nova-events')
-            ->hasViews()
             ->hasConfigFile()
             ->hasMigrations(
                 [

@@ -64,7 +64,7 @@ class Event extends Resource
 
             Date::make('End Date')
                 ->sortable()
-                ->rules('sometimes:date'),
+                ->rules('nullable', 'date', 'after_or_equal:start_date'),
 
             Text::make('Venue')
                 ->hideFromIndex(),

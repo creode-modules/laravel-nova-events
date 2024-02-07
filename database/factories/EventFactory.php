@@ -28,12 +28,15 @@ class EventFactory extends Factory
     {
         $title = $this->faker->sentence;
 
+        $start_date = $this->faker->dateTimeBetween('-1 year', '+1 year');
+        $randomDay = $this->faker->numberBetween(1, 10);
+
         return [
             'published_at' => $this->faker->randomElement([null, $this->faker->dateTimeBetween('-1 year', 'now')]),
             'title' => $title,
             'slug' => \Illuminate\Support\Str::slug($title),
-            'start_date' => $this->faker->dateTimeBetween('now', '+1 year'),
-            'end_date' => $this->faker->randomElement([null, $this->faker->dateTimeBetween('+1 year', '+2 years')]),
+            'start_date' => $start_date,
+            'end_date' => $start_date->modify("+$randomDay day"),
             'venue' => $this->faker->company,
             'address' => $this->faker->address,
             'cta_link' => $this->faker->url,

@@ -2,6 +2,7 @@
 
 namespace Creode\LaravelNovaEvents\Database\Factories;
 
+use Illuminate\Support\Facades\Storage;
 use Creode\LaravelNovaEvents\Entities\Event;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -39,6 +40,13 @@ class EventFactory extends Factory
             'end_date' => $start_date->modify("+$randomDay day"),
             'venue' => $this->faker->company,
             'address' => $this->faker->address,
+            'featured_image' => $this->faker->image(
+                Storage::disk(config('nova-events.image_disk', 'public'))->path(''),
+                640,
+                480,
+                null,
+                false
+            ),
             'cta_link' => $this->faker->url,
         ];
     }

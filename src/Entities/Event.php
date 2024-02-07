@@ -45,6 +45,12 @@ class Event extends Model
         return \Creode\LaravelNovaEvents\Database\Factories\EventFactory::new();
     }
 
+    /**
+     * Query scope for past events.
+     *
+     * @param Builder $query
+     * @return void
+     */
     public function scopePastEvents(Builder $query): void
     {
         $endDateIsNull = $query->whereNull('end_date');
@@ -57,6 +63,12 @@ class Event extends Model
         });
     }
 
+    /**
+     * Query scope for upcoming events.
+     *
+     * @param Builder $query
+     * @return void
+     */
     public function scopeUpcomingEvents(Builder $query): void
     {
         $query->whereDate('start_date', '>', now()->format('Y-m-d H:i:s'))

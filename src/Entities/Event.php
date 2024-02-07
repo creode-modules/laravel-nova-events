@@ -3,8 +3,10 @@
 namespace Creode\LaravelNovaEvents\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use PawelMysior\Publishable\Publishable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
@@ -45,6 +47,12 @@ class Event extends Model
         return \Creode\LaravelNovaEvents\Database\Factories\EventFactory::new();
     }
 
+    /**
+     * Query scope for past events.
+     *
+     * @param Builder $query
+     * @return void
+     */
     public function scopePastEvents(Builder $query): void
     {
         $endDateIsNull = $query->whereNull('end_date');
@@ -57,9 +65,34 @@ class Event extends Model
         });
     }
 
+    /**
+     * Query scope for upcoming events.
+     *
+     * @param Builder $query
+     * @return void
+     */
     public function scopeUpcomingEvents(Builder $query): void
     {
         $query->whereDate('start_date', '>', now()->format('Y-m-d H:i:s'))
             ->orWhereDate('end_date', '>', now()->format('Y-m-d H:i:s'));
+    }
+
+    /**
+     * Allows the retrieval of the featured image URL.
+     *
+     * @return Attribute
+     */
+    public function featuredImageUrl(): Attribute
+    {
+        return Attribute::make(
+            get: function () {
+                if (empty($this->featured_image)) {
+                    return null;
+                }
+
+                return Storage::disk(config('nova-events.image_disk', 'public'))
+                    ->url($this->featured_image);
+            }
+        );
     }
 }

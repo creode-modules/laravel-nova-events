@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\URL;
 use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Slug;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Creode\NovaPublishable\Published;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -57,6 +58,11 @@ class Event extends Resource
                 ->rules('required', 'max:255'),
 
             Slug::make('Slug')->from('Title'),
+
+            Image::make('Featured Image')
+                ->disk(config('nova-events.image_disk', 'public'))
+                ->path('events')
+                ->hideFromIndex(),
 
             Date::make('Start Date')
                 ->sortable()

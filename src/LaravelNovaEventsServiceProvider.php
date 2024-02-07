@@ -55,6 +55,7 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
                     '2024_02_05_155914_remove_event_categories_table',
                     '2024_02_06_094533_add_published_field_to_events_table',
                     '2024_02_06_115243_remove_sub_category_id_field_from_events_table',
+                    '2024_02_07_151630_add_featured_image_field_to_events_table',
                 ]
             )
             ->runsMigrations();

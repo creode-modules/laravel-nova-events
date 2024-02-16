@@ -33,5 +33,5 @@ return [
     | and updating a resource.
     |
     */
-    'traffic_cop' => false,
+    'traffic_cop' => true,
 ];

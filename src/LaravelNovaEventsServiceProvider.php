@@ -27,6 +27,7 @@ class LaravelNovaEventsServiceProvider extends PackageServiceProvider
     public function registerResources()
     {
         Event::$model = config('nova-events.event_model', \Creode\LaravelNovaEvents\Entities\Event::class);
+        Event::$trafficCop = config('nova-events.traffic_cop');
         Nova::resources([
             Event::class,
         ]);
